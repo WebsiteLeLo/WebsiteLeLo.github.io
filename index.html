@@ -180,19 +180,28 @@ form button.submit:hover {
     <button disabled>Coming Soon</button>
   </div>
 </section><section class="form-container" id="orderFormContainer">
-  <h2 style="text-align:center; color: var(--primary);">Submit Your Order</h2>
+  <h2 style="text-align:center; color: var(--primary);">Submit Your Order</h2><br>
   <form id="orderForm">
     <input type="hidden" id="selectedPlan" name="plan">
     <input type="text" id="name" placeholder="Your Name" required>
     <input type="email" id="email" placeholder="Your Email" required>
     <input type="text" id="phone" placeholder="Your Phone Number" required>
     <textarea id="details" placeholder="Describe your requirements..." rows="4"></textarea>
-    <button type="submit" class="submit">Send Order to Telegram</button>
+    <button type="submit" class="submit">Order Now</button>
   </form>
 </section><script>
   document.querySelectorAll('.buy-btn').forEach(button => {
     button.addEventListener('click', () => {
       const plan = button.parentElement.getAttribute('data-plan');
+      for(i of document.querySelectorAll('.buy-btn')){
+        
+      i.style = 'background-color:#0d6efd;'
+i.innerHTML = 'Buy Now'
+      }
+      
+      console.log(button)
+      button.style='background-color:green;'
+      button.innerHTML='Selected'
       document.getElementById('selectedPlan').value = plan;
       document.getElementById('orderFormContainer').classList.add('active');
       document.getElementById('orderFormContainer').scrollIntoView({ behavior: 'smooth' });
@@ -226,4 +235,4 @@ form button.submit:hover {
       });
   });
 </script></body>
-  </html>
+</html>
