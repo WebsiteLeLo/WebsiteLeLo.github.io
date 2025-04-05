@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebsiteLeLo - Website Seller</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #f8f9fa;
+      --text-dark: #212529;
+      --primary: #0d6efd;
+      --secondary: #6c757d;
+      --card-bg: #ffffff;
+      --border-color: #dee2e6;
+    }* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 30px 15px;
+}
+
+.plan {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-wrap: break-word;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+}
+
+.plan h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.plan p {
+  margin-bottom: 15px;
+  color: var(--secondary);
+  flex-grow: 1;
+}
+
+.plan button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.plan button:hover {
+  background-color: #0b5ed7;
+}
+
+.plan button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.form-container {
+  display: none;
+  background: var(--card-bg);
+  padding: 25px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.form-container.active {
+  display: block;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form button.submit {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+form button.submit:hover {
+  background-color: #0b5ed7;
+}
+
+  </style>
+</head>
+<body><header>
+  <h1>WebsiteLeLo</h1>
+  <p>Cheapest Website Plans Forever | 24-Hour Support<br><br>
+© Gourav Saini & 2025</p>
+</header><section class="plans">
+  <div class="plan" data-plan="websiteLelo.github.io/websitename (₹99)">
+    <h2>₹99 Plan</h2>
+    <p style="word-wrap: break-word;">websiteLelo.github.io/websitename - only Frontend</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan" data-plan="websitename.github.io (₹149)">
+    <h2>₹149 Plan</h2>
+    <p>websitename.github.io - only Frontend</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan" data-plan="websitename.com (₹599)">
+    <h2>₹599 Plan</h2>
+    <p>websitename.com - only Frontend</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan" data-plan="websitename.com (₹999)">
+    <h2>₹999 Plan</h2>
+    <p>websitename.com - Frontend & Backend (Not So Advanced)</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan" data-plan="websitename.in (₹549)">
+    <h2>₹549 Plan</h2>
+    <p>websitename.in - only Frontend</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan" data-plan="websitename.in (₹949)">
+    <h2>₹949 Plan</h2>
+    <p>websitename.in - Frontend & Backend (Not So Advanced)</p>
+    <button class="buy-btn">Buy Now</button>
+  </div>
+  <div class="plan">
+    <h2>₹6999 Plan</h2>
+    <p>Advance Backend with domain - Coming Soon</p>
+    <button disabled>Coming Soon</button>
+  </div>
+</section><section class="form-container" id="orderFormContainer">
+  <h2 style="text-align:center; color: var(--primary);">Submit Your Order</h2>
+  <form id="orderForm">
+    <input type="hidden" id="selectedPlan" name="plan">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <input type="text" id="phone" placeholder="Your Phone Number" required>
+    <textarea id="details" placeholder="Describe your requirements..." rows="4"></textarea>
+    <button type="submit" class="submit">Send Order to Telegram</button>
+  </form>
+</section><script>
+  document.querySelectorAll('.buy-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const plan = button.parentElement.getAttribute('data-plan');
+      document.getElementById('selectedPlan').value = plan;
+      document.getElementById('orderFormContainer').classList.add('active');
+      document.getElementById('orderFormContainer').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  document.getElementById('orderForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const plan = document.getElementById('selectedPlan').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const details = document.getElementById('details').value;
+    const dateTime = new Date().toLocaleString();
+
+    const message = `New Website Order:%0APlan: ${plan}%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ADetails: ${details}%0ADate & Time: ${dateTime}`;
+
+    const botToken = '8196720294:AAFyQwQyC0PupW7f6r3LkD2fO2ftBz8lOag';
+    const chatId = '1486476675';
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          alert(`Order submitted successfully! ${name}! We will contact you earlier...`);
+          document.getElementById('orderForm').reset();
+          document.getElementById('orderFormContainer').classList.remove('active');
+        } else {
+          alert('Failed to send order. Try again.');
+        }
+      });
+  });
+</script></body>
+  </html>
